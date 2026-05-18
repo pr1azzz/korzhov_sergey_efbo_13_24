@@ -14,7 +14,6 @@ def get_user(
     current_user: User = Depends(get_current_user),
     storage=Depends(get_storage)
 ):
-    # В реальном приложении здесь был бы запрос к БД пользователей
     if user_id != current_user.id:
         raise HTTPException(status_code=403, detail="Access denied")
     return {"id": user_id, "role": current_user.role}
